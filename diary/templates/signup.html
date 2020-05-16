@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link rel="icon" href="/static/logo.jpg/" />
+    <title>WriteMyDiary | Register</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="height: 90vh; display:flex; justify-content: center; align-items: center;">
+    <br>
+    <div class="card" style="width: 25rem;background-color: #f9e2e5;">
+        <div class="card-body">
+            <h4 class="card-title" style="color:Black Russian; text-align: center;margin-top: 1px">CREATE AN ACCOUNT TO OWN A DIARY</h4>
+            <form action="/signup/" method="POST">
+                {% csrf_token %}
+                <div style="display: flex;">
+                    <i class="fas fa-user" style="margin-top: 6px"></i>  &nbsp;
+                <input type="text" name="fullname" class="form-control" placeholder="Fullname">
+                </div>
+                <br>
+                <div style="display: flex;">
+                    <i class="fas fa-user-tag" style="margin-top: 6px"></i>  &nbsp;
+                    <input type="text" name="username" class="form-control" placeholder="Username" >
+                </div>
+                <br>
+                <div style="display: flex;">
+                    <i class="fas fa-envelope" style="margin-top: 6px"></i>  &nbsp;
+                    <input type="email" name="email"validate="required:true" title="Valid email-id" class="form-control" placeholder="Email-ID" >
+                </div>
+                <br>
+                <div style="display: flex;">
+                    <i class="fas fa-key" style="margin-top: 6px"></i> &nbsp;
+                    <input type="password" name="password" class="form-control" placeholder="Create your secret pin">
+                </div>
+                <br>
+                <div style="display: flex;">
+                    <i class="fas fa-book" style="margin-top: 6px" ></i>&nbsp;
+                    <input type="text" name="diaryname" class="form-control" placeholder="Give your diary a name">
+                </div>
+                <br>
+                <center><button type="submit" class="btn btn-outline-dark btn-lg" style="width: 160px; background-color: #040116;color: white;">Sign Up</button></center>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

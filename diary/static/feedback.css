@@ -1,0 +1,26 @@
+body{
+
+}
+.box{
+	border: 1px solid black;
+	height: 400px;
+	width: 760px;
+	background-color: black;
+}
+.box-image{
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+/*.icons{
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 20px;
+	flex-wrap: wrap;
+	padding-left: 60px;
+}*/
+a{
+	text-decoration: none;
+	color: white;
+}

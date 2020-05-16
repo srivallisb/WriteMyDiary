@@ -1,0 +1,36 @@
+{% extends 'dash_base.html' %}
+{% block head %}
+  <link rel="icon" href="/static/logo.jpg/" />
+  <title>Recall your diary</title>
+<link rel="stylesheet" href="/static/dash.css/">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12" style="margin-left:0px; margin-top:0px;background-image: url(/static/bg_for_specific.jpg/);width:100%;height:max-content; background-repeat: no-repeat; background-size: cover;">
+
+            <div class="head" style="margin-top: 50px; display: flex; justify-content: space-between;">
+                <div>
+                    <h3>Highlight of the day:</h3>
+                    <b><h2>{{viewdiary.highlight}}</h2></b>
+                </div>
+                <div>                   
+                    <p>{{viewdiary.timestamp}}</p>
+                    <a href="/edit/{{viewdiary.id}}/" class="btn btn-dark" style="border-radius: 25px; text-align: center;display: inline;"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-outline-danger" style="text-align: center;display: inline;" href="/deleteDiary/{{viewdiary.id}}/"><i class="far fa-trash-alt"></i></a>
+                </div>
+            </div>
+            <br>  
+            <div class="content" style="background:rgba(56, 56, 56, 0.5); color: black; ">                
+                    <p style="font-family: sans-serif; color: black; font-size: 40px; font-weight: 800;">{{viewdiary.diarycontent|safe}}</p> 
+            </div>        
+            <br>
+
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

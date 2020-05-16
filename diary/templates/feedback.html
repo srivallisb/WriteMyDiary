@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<link rel="icon" href="/static/logo.jpg/" />
+		<title> | Valuable feedback</title>
+  		<link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+  		<link rel="stylesheet" type="text/css" href="/static/feedback.css/">
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	</head>
+	<body style="background-color: #040116;color:#E7E5E9;">
+		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #E7E5E9;color:#040116;font-family: 'Open Sans';">
+                        <!-- <div class="container"> -->
+                            <div>
+                                <div style="display: flex;color:#040116;">
+                                <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                                <h2 style="font-family: 'Open Sans';font-size: 45px;">WriteMyDiary</h2>
+                                </div>                             
+                            </div>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav ml-auto">
+                                	 	  <a class="nav-item nav-link nav-style" style="background-color: #fff;color: black;" data-scroll="" href="/">Back To Home</a>
+                   
+                                </div>
+                            </div>
+                    </nav>
+                    <div class="container mt-4">
+					    <h1 class="display-4 text-center" style="color: #f9e2e5">
+					      <i class="fa fa-book-open"></i> Your Valuable Feedback &nbsp; <i class="fas fa-comments"></i></h1>
+					      <br>
+					      <div class="row">
+					      	<div class="col-md-2"></div>
+					      	<div class="col-md-8">
+					      		<div class="box" style="background-color:#E7E5E9 ; color: #040116;">
+					      			<div class="row">
+					      				<div class="col-md-6">
+					      					<center>
+					      					<img src="/static/logo.jpg/" class="box-image">
+					      					<p style="font-size: larger;"> <strong>Free online private diary.</strong><br> 
+					      						We provide you a virtual friend to express your thoughts,
+					      						feelings.
+					      						Your opinion about &nbsp; <span style="font-size: 20px;font-weight: bold;">WriteMyDiary</span> is extremely important for us. So please feel free to fill the feedback form and lest us know what you feel.
+					      					</p></center>
+					      				</div>
+					      				<div class="col-md-6">
+																      					<!-- Button trigger modal -->
+											<center><button type="button" class="btn btn-lg" data-toggle="modal" data-target="#exampleModal" style="margin-top: 20vh; background-color: #040116;color: #f9e2e5; height: 70px; width: 190px" id="feedbackbtn">
+											  GIVE FEEDBACK
+											</button></center>
+
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"  style="color: black;">
+											  <div class="modal-dialog" role="document">
+											    <div class="modal-content">
+											      <div class="modal-header">
+											        <h5 class="modal-title" id="exampleModalLabel">Your Feedback</h5>
+											        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											          <span aria-hidden="true">&times;</span>
+											        </button>
+											      </div>
+											      <div class="modal-body">
+											        <form action="/feedback/" method="POST" class="form" id="numform" oninput="x.value=parseInt(a.value)">
+											        	{% csrf_token %}
+											            <div class="form-group">
+											              <label for="numform">How many times do you use this app, a day?</label>
+											              <input type="number" name="number_of_times" class="form-control" required="true">
+											              <br>
+											          </div>
+
+											          <div class="form-group">
+											            <label for="">Would you prefer to share this app with your friends and family and why?</label>
+											            <br>
+											            <label class="checkbox-inline" name="">YES</label>
+											            	<input type="checkbox" name="prefer" value="yes">
+													    
+													    <label class="checkbox-inline">NO</label>
+													        <input type="checkbox" value="no" name="prefer">
+													    
+											        </div>
+											         <div class="form-group">
+											            <label for="">Is this app user friendly?</label>
+											            <br>
+											            <label class="checkbox-inline">YES</label>
+											            	<input type="checkbox" value="yes" name="user_friendly">
+													    
+													    <label class="checkbox-inline">NO</label>
+													        <input type="checkbox" value="no" name="user_friendly">
+													   
+											        </div>
+											       
+											        <div class="form-group">
+													    <label for="formControlRange">How much do you rate this app, for 100?</label>
+													    <br>
+													    <div style="display: flex;">
+													    0<input type="range"class="form-control-range" id="a" name="a" >100
+														</div>
+													</div>
+											    <!-- </form> -->
+												<output form="numform" id="x" name="x" ></output>
+
+											      </div>
+											      <div class="modal-footer" style="color: black;">
+											        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+											        <input type="Submit" id="submitbtn" class="btn btn-primary" onclick="submitform()">
+											      </div>
+											      </form>
+											    </div>
+											  </div>
+											</div>
+					      				</div>
+					      			</div>
+					      		</div>
+					      	</div>
+					      	<div class="col-md-2"></div>	
+					      </div>
+					  </div>
+	<script type="text/javascript">
+		function submitform(){
+			var x=document.getElementById('submitbtn');
+			// if(numform.is_success){
+				
+			
+			alert("Thank You For Your Valuable Feedback")
+			// }
+		}
+	</script>
+  	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</body>
+
+</html>

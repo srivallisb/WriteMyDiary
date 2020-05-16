@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/dash.css/">
+  <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="icon" href="/static/logo.jpg/" />
+  <title>Create diary</title>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
+  <style>
+    body{
+      font-family:Cambria;
+      background-color: rgb(4, 73, 129);
+      color: white;
+    }
+   .pill-nav a {
+    display: block;
+    display: flex;
+    flex-direction:column;
+    color: black;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 5px;
+  }
+
+  .pill-nav a:hover{
+                    background-color: black;
+                    color: white;
+                  }
+
+  .pill-nav a.active{
+    background-color: black;
+                    color: white;
+  }
+  .pill-nav a{
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="color: white;background-color: black;">
+  
+    <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+    <h2><span style="color: rgb(230, 157, 63);">W</span>rite<span style="color: rgb(230, 157, 63);">M</span>y<span style="color: rgb(230, 157, 63);">D</span>iary</h2>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto">
+      {% if not user.is_authenticated  %}
+      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link nav-style" data-scroll="" href="/signup/">Signup <i class="fas fa-user-plus"></i></a>
+      <a class="nav-item nav-link nav-style" data-scroll="" href="/signin/">Login <i class="fas fa-user-circle"></i></i></a>
+      {% else %}
+      <a class="nav-item nav-link nav-style" style="background-color: #fff;color: black;" href="/dashboard/">Dashboard</a>
+      <a class="nav-item nav-link nav-style" style="background-color: #fff;color: black;" href="/signout/">Logout</a>
+      {% endif %}
+
+    </div>
+ </div>
+</nav>
+    <div class="row">
+      <div class="col-2">
+        <br>
+        <nav class="pill-nav">
+          <a href="/dashboard">All diary entries</a>
+          <a href="/create" class="active">New diary</a>
+          <a href="/favs">Starred entries</a>
+        </nav>
+    </div>
+      <div class="col-md-9">
+        <br>
+        <div id="create-section">
+          
+          <form action="/create/" method="POST">
+            {% csrf_token %}
+            <div style="float: left;">
+              <label for="highlight">Highlight of the day:</label>
+              <input type="text" name="highlight" id="highlight" style="border-top: none;border-left: none;border-right: none;border-bottom: 1px solid black; size: 100px;background: transparent;">
+            </div>
+              <br>
+              <br>
+              
+            <div>
+              <textarea name="diarycontent" id="summernote"></textarea>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-lg btn-dark" value="Post" style="width:180px;margin-left: 600px;">
+            
+          </form>
+          
+        </div>
+
+      </div>
+      <div class="col-2"></div>
+  </div>
+
+  <script>
+    // $(document).ready(function() {
+    //     $('#summernote').summernote();
+    // });
+     $('#summernote').summernote({
+        placeholder: 'Type here...',
+        tabsize: 2,
+        height: 300
+      });
+     // });
+  </script>
+</body>
+</html>

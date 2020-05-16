@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/dash.css/">
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+        <style type="text/css">
+          body{
+            font-family:'Open Sans';
+           /* font-size: 20px;*/
+           color: white;
+           background-color: #E7E5E9;
+          }
+         .pill-nav a {
+          display: block;
+          display: flex;
+          flex-direction:column;
+          color: black;
+          padding: 14px;
+          text-decoration: none;
+          font-size: 17px;
+          border-radius: 5px;
+        }
+
+        .pill-nav a:hover{
+                          background-color: #040116;
+                          color: white;
+                        }
+       .pill-nav a.active{
+          background-color: #040116;
+                          color: white;
+        }
+        .pill-nav a{
+          margin-bottom: 10px;
+        }
+    </style>
+    {% block head %}
+    {% endblock %}
+</head>
+<body >
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#E7E5E9; color:#040116;">
+            <div class="container">
+              <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+              <h2>WriteMyDiary</h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    {% if not user.is_authenticated  %}
+                    <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link nav-style" data-scroll="" href="/signup/">Signup <i class="fas fa-user-plus"></i></a>
+                    <a class="nav-item nav-link nav-style" data-scroll="" href="/signin/">Login <i class="fas fa-user-circle"></i></i></a>
+                    {% else %}
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#040116;font-size: 20px">
+                          {{user.username}}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/dashboard/">All entries <i class="fas fa-book-reader"></i></a>
+                          <a class="dropdown-item" href="#">Your profile <i class="far fa-address-card"></i></a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="/signout/">Logout <i class="fas fa-sign-out-alt"></i></a>
+                        </div>
+                      </li>
+                    {% endif %}
+
+                </div>
+            </div>
+        </nav>
+        <!-- ---------------- -->
+        <!-- side- nav -->
+
+<div class="row">
+    <div class="col-md-3" style="background-color: white; height: 700vh;">
+        <br>
+        <nav class="pill-nav">
+          <h3 style="color:#040116;text-align: center;">{{owner.diaryname}}<i class="fa fa-book-open"></i></h3>
+          <br>
+          <a class="active" href="/dashboard/">All diary entries</a>
+          <a href="/create/">New diary</a>
+          <a href="/favs/">Your starred entries</a>
+        </nav>
+    </div>
+    <div class="col-md-8">
+      {% block body %}
+      {% endblock %}
+    </div>
+    <div class="col-md-2">
+
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% block js %}
+{% endblock %}
+
+</body>
+</html>

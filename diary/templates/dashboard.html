@@ -1,0 +1,51 @@
+{% extends 'dash_base.html' %}
+{% block head %}
+    <link rel="icon" href="/static/logo.jpg/" />
+    <title>WriteMyDiary| Your personal diary online</title>
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="diary_details" style="display: flex;justify-content: center;color: #040116;">
+  </div>
+{% if all_diaries|length == 0 %}
+<div style="color: white; position:absolute; left: 30%;top: 50%;">
+<h2>No diary entries found. 😟</h2>
+<a href="/create/" class="btn btn-outline-warning" style="width: 160px;">Start your first diary <i class="fas fa-pen"></i></a>
+
+</div>
+{% else %}
+{% for d in all_diaries %}
+
+	<div class="card " style="background-color: #040116; color: white; margin-bottom: 15px;">
+  <div class="card-header" style="display: flex; justify-content: space-between;background-color:#f9e2e5;">
+    <div>
+     <h4 style="text-align: left;color: black;">{{d.highlight}}</h4>
+    </div>
+    <div>
+    {% if not d.is_favourite %}
+    <form action="/fav/{{d.id}}/" method="POST">
+   {% csrf_token %}
+    <button class="btn " type="submit" name="is_favourite" style=" border: none; float: right;">
+      <i class="far fa-star"></i></button>
+    </form>
+     {% else %}
+    <form action="/unfav/{{d.id}}/" method="POST">
+   {% csrf_token %}
+    <button class="btn " type="submit" name="is_favourite" style="border: none; float: right;"><i class="fas fa-star"></i></button>
+  </form>
+    {% endif %}
+  </div>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title" style="float: right;">{{d.timestamp | timesince}} ago</h6>
+    <p class="card-text">{{d.diarycontent|safe}}</p>
+    <br>
+    <a href="/diary/{{d.id}}/" class="btn btn-primary" style="border-radius: 25px;">Recall the day</a>
+    <a class="btn btn-outline-danger" style="text-align: center;float: right;background-color: white;color: red" href="/deleteDiary/{{d.id}}/"> <i class="far fa-trash-alt"></i> </a>
+  </div>
+</div>
+
+{% endfor %}
+{% endif %}
+{% endblock %}

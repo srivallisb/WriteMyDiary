@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>  
+    <link rel="stylesheet" href="/static/signup.css/">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body{
+            font-family:'Open Sans';
+          }
+    </style>
+    {% block head %}
+    {% endblock %}
+</head>
+<body style="background-color: #040116;">
+        <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #E7E5E9;">
+            <div class="container">
+            
+            <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+                    <h2>WriteMyDiary</h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ml-auto">
+                    {% if not user.is_authenticated  %}
+                    <a class="nav-item nav-link active" href="/" style="background-color: white;border-radius: 20px;">Home</a>
+                    <a class="nav-item nav-link nav-style active" data-scroll="" href="/signup/">Signup <i class="fas fa-user-plus"></i></a>
+                    <a class="nav-item nav-link nav-style active" data-scroll="" href="/signin/">Login <i class="fas fa-user-circle"></i></i></a>
+                    {% else %}
+                    <a class="nav-item nav-link nav-style active" href="/dashboard/">Dashboard</a>
+                    <a class="nav-item nav-link nav-style active" href="/signout/">Logout</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </nav>
+    
+    {% block body %}
+    {% endblock %}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% block js %}
+{% endblock %}
+</body>
+</html>
