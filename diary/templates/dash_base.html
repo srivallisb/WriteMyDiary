@@ -14,8 +14,7 @@
           body{
             font-family:'Open Sans';
            /* font-size: 20px;*/
-           color: white;
-           background-color: #E7E5E9;
+           color: #040116;
           }
          .pill-nav a {
           display: block;
@@ -29,8 +28,9 @@
         }
 
         .pill-nav a:hover{
-                          background-color: #040116;
-                          color: white;
+                          /*background-color: #040116;*/
+                          border: 1px solid #040116;
+                          color: black;
                         }
        .pill-nav a.active{
           background-color: #040116;
@@ -44,7 +44,7 @@
     {% endblock %}
 </head>
 <body >
-        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#E7E5E9; color:#040116;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#040116; color:#fff;">
             <div class="container">
               <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
               <h2>WriteMyDiary</h2>
@@ -59,12 +59,12 @@
                     <a class="nav-item nav-link nav-style" data-scroll="" href="/signin/">Login <i class="fas fa-user-circle"></i></i></a>
                     {% else %}
                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#040116;font-size: 20px">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#fff;font-size: 20px">
                           {{user.username}}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="/dashboard/">All entries <i class="fas fa-book-reader"></i></a>
-                          <a class="dropdown-item" href="#">Your profile <i class="far fa-address-card"></i></a>
+                          <a class="dropdown-item" href="/myprofile/">Your profile <i class="far fa-address-card"></i></a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="/signout/">Logout <i class="fas fa-sign-out-alt"></i></a>
                         </div>
@@ -78,21 +78,21 @@
         <!-- side- nav -->
 
 <div class="row">
-    <div class="col-md-3" style="background-color: white; height: 700vh;">
+    <div class="col-md-2" style="background-color: white; height: 700vh;">
         <br>
         <nav class="pill-nav">
-          <h3 style="color:#040116;text-align: center;">{{owner.diaryname}}<i class="fa fa-book-open"></i></h3>
+          <h4 style="color:#040116;text-align: center;">{{owner.diaryname}}<i class="fa fa-book-open"></i></h4>
           <br>
           <a class="active" href="/dashboard/">All diary entries</a>
           <a href="/create/">New diary</a>
-          <a href="/favs/">Your starred entries</a>
+          <a href="/fav-diaries/">Your starred entries</a>
         </nav>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
       {% block body %}
       {% endblock %}
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
 
     </div>
   </div>

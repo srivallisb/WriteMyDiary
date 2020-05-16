@@ -154,4 +154,10 @@ def unFavourite(request,DiaryEntries_id):
     return redirect("/dashboard/")  
 
 def starred(request):
-    return render(request, "starred.html")
+    user=request.user
+    owner=Owner.objects.get(user=user)
+    all_diaries=DiaryEntries.objects.filter(is_favourite=True).order_by('-timestamp')
+    return render(request,"starred.html",{"all_diaries":all_diaries, "owner":owner})
+
+def profile(request):
+    return render(request, "profile.html")

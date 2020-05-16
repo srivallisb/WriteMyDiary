@@ -32,6 +32,8 @@ urlpatterns = [
     path("faq/",faq),
     path("feedback/",feedback),
     path("fav-diaries/", starred),
+    path("contact/",contact),
+    path("myprofile/", profile),
     path("signout/",signout),
-    path("contact/",contact)
+
 ]

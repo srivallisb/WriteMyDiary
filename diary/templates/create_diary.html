@@ -8,9 +8,10 @@
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="icon" href="/static/logo.jpg/" />
-  <title>Create diary</title>
+  <link rel="icon" href="/static/logo.jpg/" />
+    <title>| New Diary</title>
 
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
@@ -21,9 +22,9 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
   <style>
     body{
-      font-family:Cambria;
-      background-color: rgb(4, 73, 129);
-      color: white;
+      font-family:'Open Sans';
+      background-color: #E7E5E9;
+      color: #333;
     }
    .pill-nav a {
     display: block;
@@ -37,40 +38,33 @@
   }
 
   .pill-nav a:hover{
-                    background-color: black;
-                    color: white;
+                    border: 1px solid #040116;
+                    color: black;
                   }
 
-  .pill-nav a.active{
-    background-color: black;
-                    color: white;
-  }
   .pill-nav a{
     margin-bottom: 10px;
   }
 </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="color: white;background-color: black;">
-  
+ <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #040116;">
+                        
+    <div>
+    <div style="display: flex;color: #E7E5E9;">
     <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
-    <h2><span style="color: rgb(230, 157, 63);">W</span>rite<span style="color: rgb(230, 157, 63);">M</span>y<span style="color: rgb(230, 157, 63);">D</span>iary</h2>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <h2 style="font-family: Open Sans;font-size: 40px;">WriteMyDiary</h2>
+    </div>    
+      </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto">
-      {% if not user.is_authenticated  %}
-      <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link nav-style" data-scroll="" href="/signup/">Signup <i class="fas fa-user-plus"></i></a>
-      <a class="nav-item nav-link nav-style" data-scroll="" href="/signin/">Login <i class="fas fa-user-circle"></i></i></a>
-      {% else %}
-      <a class="nav-item nav-link nav-style" style="background-color: #fff;color: black;" href="/dashboard/">Dashboard</a>
-      <a class="nav-item nav-link nav-style" style="background-color: #fff;color: black;" href="/signout/">Logout</a>
-      {% endif %}
-
-    </div>
- </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" style="color:#E7E5E9; " href="/dashboard/">Dashboard</a>
+            <a class="nav-item nav-link" style="color:#E7E5E9; " href="/signout/">Logout</a>
+          </div>
+       </div>
 </nav>
     <div class="row">
       <div class="col-2">
@@ -78,7 +72,7 @@
         <nav class="pill-nav">
           <a href="/dashboard">All diary entries</a>
           <a href="/create" class="active">New diary</a>
-          <a href="/favs">Starred entries</a>
+          <a href="/fav-diaries/">Starred entries</a>
         </nav>
     </div>
       <div class="col-md-9">
@@ -98,7 +92,7 @@
               <textarea name="diarycontent" id="summernote"></textarea>
             </div>
             <br>
-            <input type="submit" class="btn btn-lg btn-dark" value="Post" style="width:180px;margin-left: 600px;">
+            <input type="submit" class="btn btn-lg" value="Post" style="width:180px; background-color:#040116;color: white; margin-left: 600px;">
             
           </form>
           

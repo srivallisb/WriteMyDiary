@@ -1,51 +1,54 @@
 {% extends 'dash_base.html' %}
 {% block head %}
     <link rel="icon" href="/static/logo.jpg/" />
-    <title>WriteMyDiary| Your personal diary online</title>
+    <title>WriteMyDiary| Your personal online diary</title>
 {% endblock %}
 
 {% block body %}
 <br>
-<div class="diary_details" style="display: flex;justify-content: center;color: #040116;">
-  </div>
-{% if all_diaries|length == 0 %}
+<div style="display: flex;justify-content: space-between;">
+<h2>Hi {{user.username}}, here's all your diary entries...</h2>
+<a href="/create/" class="btn btn-primary" style="text-align: center;"><i class="fas fa-plus-circle"></i> &nbsp;New Entry</a>
+</div>
+<br>
+<br>
+{% if all_diaries.count == 0 %}
 <div style="color: white; position:absolute; left: 30%;top: 50%;">
 <h2>No diary entries found. 😟</h2>
-<a href="/create/" class="btn btn-outline-warning" style="width: 160px;">Start your first diary <i class="fas fa-pen"></i></a>
+<a href="/create/" class="btn btn-outline-info" style="width: 160px;">Start your first diary <i class="fas fa-pen"></i></a>
 
 </div>
 {% else %}
 {% for d in all_diaries %}
-
-	<div class="card " style="background-color: #040116; color: white; margin-bottom: 15px;">
-  <div class="card-header" style="display: flex; justify-content: space-between;background-color:#f9e2e5;">
+<div style="display: flex;justify-content: space-around;"> 
+	<div class="card " style=" margin-bottom: 15px; width: 70%;">
+  <div class="card-header" style="display: flex; justify-content: space-between;background-color: #040116; color: white;">
     <div>
-     <h4 style="text-align: left;color: black;">{{d.highlight}}</h4>
+     <h4 style="text-align: left;">{{d.highlight}}</h4>
     </div>
     <div>
     {% if not d.is_favourite %}
     <form action="/fav/{{d.id}}/" method="POST">
    {% csrf_token %}
-    <button class="btn " type="submit" name="is_favourite" style=" border: none; float: right;">
+    <button class="btn " type="submit" name="is_favourite" style=" border: none; float: right;background-color:white; ">
       <i class="far fa-star"></i></button>
     </form>
      {% else %}
     <form action="/unfav/{{d.id}}/" method="POST">
    {% csrf_token %}
-    <button class="btn " type="submit" name="is_favourite" style="border: none; float: right;"><i class="fas fa-star"></i></button>
+    <button class="btn " type="submit" name="is_favourite" style="border: none; float: right;background-color:white;"><i class="fas fa-star"></i></button>
   </form>
     {% endif %}
   </div>
   </div>
-  <div class="card-body">
+  <div class="card-body" style="background-color:#fff;color: #333;">
     <h6 class="card-title" style="float: right;">{{d.timestamp | timesince}} ago</h6>
     <p class="card-text">{{d.diarycontent|safe}}</p>
-    <br>
     <a href="/diary/{{d.id}}/" class="btn btn-primary" style="border-radius: 25px;">Recall the day</a>
     <a class="btn btn-outline-danger" style="text-align: center;float: right;background-color: white;color: red" href="/deleteDiary/{{d.id}}/"> <i class="far fa-trash-alt"></i> </a>
   </div>
 </div>
-
+</div>
 {% endfor %}
 {% endif %}
 {% endblock %}
