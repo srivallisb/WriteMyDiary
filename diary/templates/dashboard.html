@@ -15,17 +15,11 @@
 <br>
 <hr>
 <br>
-{% if all_diaries.count == 0 %}
-<div style="color: white; position:absolute; left: 30%;top: 50%;">
-<h2>No diary entries found. 😟</h2>
-<a href="/create/" class="btn btn-outline-info" style="width: 160px;">Start your first diary <i class="fas fa-pen"></i></a>
+{% if all_diaries %}
 
-</div>
-{% else %}
 {% for d in all_diaries %}
 <div style="display: flex;justify-content: space-around;"> 
 	<div class="card " style=" margin-bottom: 15px; width: 70%;">
-  <!-- <div class="card-header" style="display: flex; justify-content: space-between;background-color: #040116; color: white;"> -->
     <div class="card-header" style="display: flex; justify-content: space-between;background-color: #E7E5E9; color: black;">
     <div>
      <h4 style="text-align: left;">{{d.highlight}}</h4>
@@ -60,5 +54,12 @@
 </div>
 </div>
 {% endfor %}
+{% else %}
+<div style="color: black; position:absolute; left: 30%;top: 50%;">
+<h2>No diary entries found. 😟</h2>
+<a href="/create/" class="btn btn-outline-info" style="width: 160px;">Start your first diary <i class="fas fa-pen"></i></a>
+
+</div>
+
 {% endif %}
 {% endblock %}
