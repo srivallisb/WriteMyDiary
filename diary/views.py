@@ -5,7 +5,8 @@ from diary.models import DiaryEntries, Owner, Feedback
 from django.conf import settings 
 from django.core.mail import send_mail
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string,get_template
 
 def landing(request):
     return render(request,"index.html")
@@ -46,6 +47,7 @@ def signin(request):
         user=authenticate(request, username=username, password=password)
         if user is not None:
             login(request,user)
+            messages.success(request,"You are logged in successfully")
             return redirect("/dashboard/")
         else:
             messages.info(request,"Invalid email or password")
@@ -56,34 +58,24 @@ def signout(request):
 	logout(request)
 	return render(request,"logout.html")
 
+@login_required
 def dashboard(request):
     user=request.user
     owner=Owner.objects.get(user=user)
     all_diaries=DiaryEntries.objects.filter(user=user).order_by('-timestamp')
     return render(request,"dashboard.html",{"all_diaries":all_diaries, "owner":owner})
 
+@login_required
 def diary_specific(request,DiaryEntries_id):
     user=request.user
     owner=Owner.objects.get(user=user)
     viewdiary=DiaryEntries.objects.get(pk=DiaryEntries_id)
     return render(request,"diary_specific.html",{"viewdiary":viewdiary, "owner":owner})
 
-
-def edit_diary(request,DiaryEntries_id):
-    diary_instance=DiaryEntries.objects.get(pk=DiaryEntries_id)
-    if request.method == "POST":
-        highlight = request.POST["highlight"]
-        diarycontent = request.POST["diarycontent"]
-        diary_instance = DiaryEntries.objects.get(pk=DiaryEntries_id)
-        diary_instance.highlight = highlight
-        diary_instance.diarycontent = diarycontent
-        diary_instance.save()
-        return redirect(f"/diary/{DiaryEntries_id}/")
-
-    return render(request, "edit_diary.html", {"editdiary":diary_instance})
-
+@login_required
 def create_diary(request):
     user=request.user
+    owner=Owner.objects.get(user=user)
     if request.method == "POST":
         highlight = request.POST["highlight"]
         diarycontent = request.POST.get("diarycontent")
@@ -99,8 +91,23 @@ def create_diary(request):
         messages.success(request,"Diary created successfully")
         return redirect("/dashboard/")
     
-    return render(request,"create_diary.html")
+    return render(request,"create_diary.html",{"owner":owner})
 
+@login_required
+def edit_diary(request,DiaryEntries_id):
+    user=request.user
+    owner=Owner.objects.get(user=user)
+    diary_instance=DiaryEntries.objects.get(pk=DiaryEntries_id)
+    if request.method == "POST":
+        highlight = request.POST["highlight"]
+        diarycontent = request.POST["diarycontent"]
+        diary_instance = DiaryEntries.objects.get(pk=DiaryEntries_id)
+        diary_instance.highlight = highlight
+        diary_instance.diarycontent = diarycontent
+        diary_instance.save()
+        return redirect(f"/diary/{DiaryEntries_id}/")
+
+    return render(request, "edit_diary.html", {"editdiary":diary_instance,"owner":owner})
 
 
 def delete_diary(request, DiaryEntries_id):
@@ -155,12 +162,14 @@ def unFavourite(request,DiaryEntries_id):
         return redirect("/dashboard/")  
     return redirect("/dashboard/")  
 
+@login_required
 def starred(request):
     user=request.user
     owner=Owner.objects.get(user=user)
     all_diaries=DiaryEntries.objects.filter(is_favourite=True).filter(user=user).order_by('-timestamp')
     return render(request,"starred.html",{"all_diaries":all_diaries, "owner":owner})
 
+@login_required
 def profile(request):
     user=request.user
     owner=Owner.objects.get(user=user)
