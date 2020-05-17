@@ -14,7 +14,7 @@ To run the project, Go to the root folder and run
 
 $ python manage.py runserver
 
-For exploring with a demo user-
+For exploring with a demo user -->
 USERNAME- test
 PASSWORD- test
 Login with these credentials.
