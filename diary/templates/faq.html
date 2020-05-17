@@ -1,9 +1,8 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 	<head>
-		
-		<link rel="icon" href="/static/logo.jpg/" />
-		    <link rel="icon" href="/static/logo.jpg/" />
+		    <link rel="icon" href="{% static 'logo.jpg' %}" />
     		<title>WriteMyDiary | FAQ</title>
   		<link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
 
@@ -11,7 +10,7 @@
 
 		<link rel="stylesheet" href="/static/faq_style.css/">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="/static/js/script.js/"></script>
+		<script src="{% static '/js/script.js' %}"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	</head>
 	<body style="background-color: #040116;color:#040116; ">		
@@ -19,7 +18,7 @@
                         <!-- <div class="container"> -->
                             <div>
                                 <div style="display: flex;color: #040116;">
-                                <img src="/static/logo.jpg/" alt="" style="width: 50px; height: 50px; border-radius: 50%;">
+                                <img src="{% static 'logo.jpg' %}" alt="" style="width: 50px; height: 50px; border-radius: 50%;">
                                 <h2 style="font-family: Open Sans;margin-top: 8px;">WriteMyDiary</h2>
                                 </div>                                
                             </div>

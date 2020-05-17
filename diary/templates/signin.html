@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block head %}
-    <link rel="icon" href="/static/logo.jpg/" />
+    <link rel="icon" href="{% static 'logo.jpg' %}" />
     <title>WriteMyDiary | Login</title>
 {% endblock %}
 
@@ -10,7 +11,7 @@
     <br>
     <div class="card" style="width: 25rem;background-color: #E7E5E9;">
         <div class="card-body">
-            <h3 class="card-title" style="color: Black Russian; text-align: center;"><img src="/static/logo.jpg/" alt="" style="width: 40px; height: 40px; border-radius: 50%;margin-top: 1px;"> &nbsp;LOGIN to open your diary</h3>
+            <h3 class="card-title" style="color: Black Russian; text-align: center;"><img src="{% static 'logo.jpg' %}" alt="" style="width: 40px; height: 40px; border-radius: 50%;margin-top: 1px;"> &nbsp;LOGIN to open your diary</h3>
             <form action="/signin/" method="POST">
                 {% csrf_token %}
                 <i class="fas fa-user-circle"></i>

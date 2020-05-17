@@ -1,6 +1,8 @@
+
 {% extends 'dash_base.html' %}
+{% load static %}
 {% block head %}
-    <link rel="icon" href="/static/logo.jpg/" />
+    <link rel="icon" href="{% static 'logo.jpg' %}"/>
     <title>WriteMyDiary  | Your personal online diary</title>
 {% endblock %}
 
@@ -46,7 +48,7 @@
   <div class="card-body" style="background-color:#fff;color: #333;">
     <div style="display: flex;justify-content: space-between;">
       <div>
-        <p class="card-title">{{d.diarycontent | safe | truncatechars:15}}</p>
+        <p class="card-title">{{d.diarycontent | safe | truncatechars:20}}</p>
       </div>
       <div>
         <h6 class="card-title" style="float: right;">{{d.timestamp | timesince}} ago</h6>

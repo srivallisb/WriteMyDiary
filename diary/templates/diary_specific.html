@@ -1,8 +1,9 @@
 {% extends 'dash_base.html' %}
+{% load static %}
 {% block head %}
-  <link rel="icon" href="/static/logo.jpg/" />
+  <link rel="icon" href="{% static 'logo.jpg' %}" />
   <title>Recall your diary</title>
-<link rel="stylesheet" href="/static/dash.css/">
+<link rel="stylesheet" href="{% static 'dash.css' %}">
 {% endblock %}
 
 {% block body %}

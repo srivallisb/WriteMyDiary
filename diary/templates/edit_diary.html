@@ -1,14 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/dash.css/">
+    <link rel="stylesheet" type="text/css" href="{% static 'dash.css' %}">
   <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-  <link rel="icon" href="/static/logo.jpg/" />
- <link rel="icon" href="/static/logo.jpg/" />
+ <link rel="icon" href="{% static 'logo.jpg' %}" />
     <title> | Edit Diary</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
@@ -76,7 +76,7 @@
           <br>
           <a class="active" href="/dashboard/" style="flex-direction: row;"><i class="fas fa-layer-group"></i> &nbsp;All entries</a>
           <a href="/create/" style="flex-direction: row;"><i class="fas fa-plus-circle"></i> &nbsp;New Entry</a>
-          <a href="/fav-diaries/" style="flex-direction: row;"><i class="fas fa-star"></i>Starred entries</a>
+          <a href="/favs/" style="flex-direction: row;"><i class="fas fa-star"></i>Starred entries</a>
         </nav>
     </div>
       <div class="col-md-9">

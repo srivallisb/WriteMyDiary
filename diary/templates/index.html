@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/static/logo.jpg/" />
+    <link rel="icon" href="{% static 'logo.jpg' %}" />
     <title>WriteMyDiary | Free online diary</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/materia/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/first.css/">
+    <link rel="stylesheet" href="{% static 'first.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 
@@ -111,14 +112,14 @@
                
                     <div class=" col-md-6" style=" justify-content: flex-end;align-items: flex-end; flex-direction: column; margin-top:5vh;">
                               <div style="display: flex;color: #040116;margin-left: 5px">
-                                <img src="/static/logo.jpg/" alt="" style="width: 63px; height: 63px; border-radius: 50%;margin-top: 20px;">
+                                <img src="{% static 'logo.jpg' %}" alt="" style="width: 63px; height: 63px; border-radius: 50%;margin-top: 20px;">
                                 <h1 style="font-family: 'Open Sans';font-size: 65px;">WriteMyDiary</h1>
                               </div>
                                 
                             <div class="tagline" style="padding: 0;margin:10px;background-color: rgba(0,0,0,0.1); flex-direction: column;border-radius: 10px;">
                                 
                               <h3 class="heading w3-center w3-animate-right" style="transition: 5s; transition-timing-function:ease;color: #040116; text-shadow:  2px 1px #E7E5E9; "> Your personal, customizable online diary </h3>
-                              <img src="/static/blogging.svg/" height="250px" width="250px">
+                              <img src="{% static 'blogging.svg' %}" height="250px" width="250px">
                               <div style="display: flex;">
                                 
                               <a class="btn btn-lg" style="background-color: white; font-size: 20px;border-radius: 25px;" data-toggle="tooltip" data-placement="left" title="Login to your account" href="/signin/">Open my diary &nbsp;
@@ -135,7 +136,7 @@
                         </div>     
                     </div>
                     <center><a data-scroll="" href="#whydiary">
-                        <i class="fas fa-arrow-alt-circle-down fa-3x"style="color: black;margin-top: 7vh" aria-hidden="true"></i>
+                        <i class="fas fa-arrow-alt-circle-down fa-3x"style="color: black;margin-top: 8vh" aria-hidden="true"></i>
                     </a></center>
             </div>
         
@@ -176,7 +177,7 @@
                   </p>
                     </div>
                     <div class="col-md-6">
-                        <img src="/static/book_lover.svg/" height="max-content" width="400px">
+                        <img src="{% static 'book_lover.svg' %}" height="max-content" width="400px">
                     </div>
                     </div>
                     
@@ -191,7 +192,7 @@
             <center>
               <div>
               <h1 style="text-align:center;color: #333; font-weight: 700;" id="about" >
-                  <span>Why write in WriteMyDiary <img src="/static/logo.jpg/" alt="" style="width: 40px; height: 40px; border-radius: 50%;margin-bottom: 3px;">?</span>
+                  <span>Why write in WriteMyDiary <img src="{% static 'logo.jpg' %}" alt="" style="width: 40px; height: 40px; border-radius: 50%;margin-bottom: 3px;">?</span>
               </h1>
               </div>
             </center>
@@ -241,10 +242,10 @@
 
 </section>
 <footer>
-    <div style="background-color: #696969;color: white; height: 220px;">
+    <div style="background-color:#181818;color: white; height: 220px;">
         <div class="container" style=" display: flex; justify-content: space-between;">
         <div style="display:flex;">
-            <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
+            <img src="{% static 'logo.jpg' %}" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
             <h2 style="margin-top: 10px;font-family: Open Sans;">WriteMyDiary</h2>
         </div>
         <br>

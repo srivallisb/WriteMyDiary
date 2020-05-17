@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings   
+from django.conf.urls.static import static 
+
 from diary.views import *
 
 urlpatterns = [
@@ -31,9 +34,9 @@ urlpatterns = [
     path("deleteDiary/<int:DiaryEntries_id>/", delete_diary),
     path("faq/",faq),
     path("feedback/",feedback),
-    path("fav-diaries/", starred),
+    path("favs/", starred),
     path("contact/",contact),
     path("myprofile/", profile),
-    path("logout/",signout),
+    path("signout/",signout),
 
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

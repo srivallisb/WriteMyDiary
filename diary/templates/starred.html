@@ -1,6 +1,7 @@
 {% extends 'dash_base.html' %}
+{% load static %}
 {% block head %}
-    <link rel="icon" href="/static/logo.jpg/" />
+    <link rel="icon" href="{% static 'logo.jpg' %}" />
     <title>WriteMyDiary| Your personal online diary</title>
 {% endblock %}
 
@@ -18,7 +19,7 @@
 				  <div class="content" style="margin-top: 10px">
 				    <h2 style="font-weight: 600">{{d.highlight}}</h2>
 				    <p>{{d.timestamp}}</p>
-				    <a href="/diary/{{d.id}}/" style="text-decoration: none;  ">Read more</a>
+				    <a href="/diary/{{d.id}}/" style="text-decoration: none; ">Read more</a>
 				    <hr>
 				  </div>
 				</div>
@@ -28,7 +29,7 @@
 	</div>
 	<div class="col-md-4">
 		<div style="float: left;">
-			<img src="/static/love.svg/" height="300px" width="300px" style="margin-top: 30px">
+			<img src="{% static 'love.svg' %}" height="300px" width="300px" style="margin-top: 30px">
 		</div>
 	</div>
 </div>
