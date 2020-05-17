@@ -5,7 +5,7 @@ from diary.models import DiaryEntries, Owner, Feedback
 from django.conf import settings 
 from django.core.mail import send_mail
 from django.contrib import messages
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 
 def landing(request):
     return render(request,"index.html")
@@ -57,21 +57,21 @@ def signout(request):
 	logout(request)
 	return render(request,"logout.html")
 
-# @login_required
+@login_required
 def dashboard(request):
     user=request.user
     owner=Owner.objects.get(user=user)
     all_diaries=DiaryEntries.objects.filter(user=user).order_by('-timestamp')
     return render(request,"dashboard.html",{"all_diaries":all_diaries, "owner":owner})
 
-# @login_required
+@login_required
 def diary_specific(request,DiaryEntries_id):
     user=request.user
     owner=Owner.objects.get(user=user)
     viewdiary=DiaryEntries.objects.get(pk=DiaryEntries_id)
     return render(request,"diary_specific.html",{"viewdiary":viewdiary, "owner":owner})
 
-# @login_required
+@login_required
 def create_diary(request):
     user=request.user
     owner=Owner.objects.get(user=user)
@@ -92,7 +92,7 @@ def create_diary(request):
     
     return render(request,"create_diary.html",{"owner":owner})
 
-# @login_required
+@login_required
 def edit_diary(request,DiaryEntries_id):
     user=request.user
     owner=Owner.objects.get(user=user)
@@ -161,14 +161,14 @@ def unFavourite(request,DiaryEntries_id):
         return redirect("/dashboard/")  
     return redirect("/dashboard/")  
 
-# @login_required
+@login_required
 def starred(request):
     user=request.user
     owner=Owner.objects.get(user=user)
     all_diaries=DiaryEntries.objects.filter(is_favourite=True).filter(user=user).order_by('-timestamp')
     return render(request,"starred.html",{"all_diaries":all_diaries, "owner":owner})
 
-# @login_required
+@login_required
 def profile(request):
     user=request.user
     owner=Owner.objects.get(user=user)
