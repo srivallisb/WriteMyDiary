@@ -5,10 +5,32 @@
 {% endblock %}
 
 {% block body %}
-<br>
-<h2>Hi {{user.username}}, recall your memories.</h2>
-<h5>Here's all your starred diary entries</h5>
-{% for d in all_diaries %}
-<h1>{{d.highlight}}</h1>
-{% endfor %}
+<div class="row">
+	<div class="col-md-8">
+		<br>
+		<h3>Hi {{user.username}}, recall your memories.</h3>
+		<h6>Here's all your starred diary entries <i class="fas fa-star"></i></h6>
+		<br>
+		{% for d in all_diaries %}
+			<div class="container" style="margin-bottom: 20px; border-radius: 7px">
+				<div style="display: flex;flex-direction: row;flex-wrap: wrap;">
+				<div class="mycard" style="width: 100%;height: 20vh;">
+				  <div class="content" style="margin-top: 10px">
+				    <h2 style="font-weight: 600">{{d.highlight}}</h2>
+				    <p>{{d.timestamp}}</p>
+				    <a href="/diary/{{d.id}}/" style="text-decoration: none;  ">Read more</a>
+				    <hr>
+				  </div>
+				</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<div class="col-md-4">
+		<div style="float: left;">
+			<img src="/static/love.svg/" height="300px" width="300px" style="margin-top: 30px">
+		</div>
+	</div>
+</div>
+
 {% endblock %}

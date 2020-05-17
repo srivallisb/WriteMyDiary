@@ -63,8 +63,10 @@ def dashboard(request):
     return render(request,"dashboard.html",{"all_diaries":all_diaries, "owner":owner})
 
 def diary_specific(request,DiaryEntries_id):
-	viewdiary=DiaryEntries.objects.get(pk=DiaryEntries_id)
-	return render(request,"diary_specific.html",{"viewdiary":viewdiary})
+    user=request.user
+    owner=Owner.objects.get(user=user)
+    viewdiary=DiaryEntries.objects.get(pk=DiaryEntries_id)
+    return render(request,"diary_specific.html",{"viewdiary":viewdiary, "owner":owner})
 
 
 def edit_diary(request,DiaryEntries_id):
@@ -156,8 +158,27 @@ def unFavourite(request,DiaryEntries_id):
 def starred(request):
     user=request.user
     owner=Owner.objects.get(user=user)
-    all_diaries=DiaryEntries.objects.filter(is_favourite=True).order_by('-timestamp')
+    all_diaries=DiaryEntries.objects.filter(is_favourite=True).filter(user=user).order_by('-timestamp')
     return render(request,"starred.html",{"all_diaries":all_diaries, "owner":owner})
 
 def profile(request):
-    return render(request, "profile.html")
+    user=request.user
+    owner=Owner.objects.get(user=user)
+    if request.method=="POST":
+        fullname=request.POST["fullname"]
+        username=request.POST["username"]
+        email=request.POST["email"]
+        password=request.POST["password"]
+        diaryname=request.POST["diaryname"].upper()
+        first_name=fullname.split()[0]
+        last_name=" ".join(fullname.split()[1:])    
+        owner.user.first_name=first_name
+        owner.user.last_name=last_name
+        owner.user.username=username
+        owner.user.email=email
+        owner.user.password=password
+        owner.diaryname=diaryname 
+        owner.save()
+        return redirect("/myprofile/")
+    messages.success(request,"Your profile was edited successfully")
+    return render(request, "profile.html",{"owner":owner})

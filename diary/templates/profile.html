@@ -1,0 +1,59 @@
+{% extends 'dash_base.html' %}
+{% block head %}
+    <link rel="icon" href="/static/logo.jpg/" />
+    <title>WriteMyDiary  | Your profile</title>
+{% endblock %}
+
+{% block body %}
+<div class="row">
+	<div class="col-md-3"> </div> 
+	<div class="col-md-6 pt-2">
+		<div style="display: flex;">
+		<i class="fas fa-user-circle fa-5x"></i> &nbsp;<h1 style="color:#040116;text-align: center;font-weight: bold;margin-top: 10px">Profile</h1>
+		</div>
+		<br>
+		<form action="/myprofile/" method="POST">
+                {% csrf_token %}
+               <div style="display: flex;">
+	               <div class="form-row"> 
+		                <div class="col-lg-6 mb-3">
+		               	<label>FirstName</label>
+		                
+		                <input type="text" name="fullname"  class="form-control" value="{{owner.user.first_name}}" readonly>
+		            	</div>
+	            	<div class="col-lg-6 mb-3">
+	               	<label>Lastname</label>
+	                    <input type="text" name="username" class="form-control" value="{{owner.user.last_name}}" readonly >
+	                </div>
+	                </div>
+                </div>
+                <div class="form-row">
+                <div class="col-lg-10">
+                    <label>Your email-id</label> 
+                    <i class="fas fa-envelope" style="margin-top: 6px"></i>  &nbsp;
+                    <input type="email" name="email" validate="required:true" title="Valid email-id" class="form-control" value="{{owner.user.email}}" >
+               	</div>
+               </div>
+                <br>
+                 <div class="form-row">
+                <div class="col-lg-10">
+               	<label>Your secret key</label>
+                    <i class="fas fa-key" style="margin-top: 6px"></i> &nbsp;
+                    <input type="password" name="password" class="form-control" value="{{owner.user.password}}">
+               	</div>
+           		</div>
+                <br>
+                <div class="form-row">
+                <div class="col-lg-10">
+               	<label>Your diary name</label>
+                    <i class="fas fa-book" style="margin-top: 6px" ></i>&nbsp;
+                    <input type="text" name="diaryname" class="form-control" value="{{owner.diaryname}}">
+               	</div>
+           		</div>
+                <br>
+                <button type="submit" class="btn btn-outline-dark btn-lg" style="width: 160px; background-color: #040116;color: white;">Save</button>
+            </form>
+         </div>
+           <div class="col-md-3"> </div> 
+    </div>
+{% endblock %}

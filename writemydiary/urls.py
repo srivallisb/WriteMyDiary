@@ -34,6 +34,6 @@ urlpatterns = [
     path("fav-diaries/", starred),
     path("contact/",contact),
     path("myprofile/", profile),
-    path("signout/",signout),
+    path("logout/",signout),
 
 ]

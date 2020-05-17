@@ -50,19 +50,19 @@
 <body>
  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #040116;">
                         
-    <div>
-    <div style="display: flex;color: #E7E5E9;">
+    <div class="container">
+    <div style="display: flex;color: #fff;">
     <img src="/static/logo.jpg/" alt="" style="width: 60px; height: 60px; border-radius: 50%;">
-    <h2 style="font-family: Open Sans;font-size: 40px;">WriteMyDiary</h2>
+    <h2 style="margin-top: 10px;">WriteMyDiary</h2>
     </div>    
-      </div>
+      <!-- </div> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" style="color:#E7E5E9; " href="/dashboard/">Dashboard</a>
-            <a class="nav-item nav-link" style="color:#E7E5E9; " href="/signout/">Logout</a>
+            <a class="nav-item nav-link" style="color:#fff; " href="/dashboard/">Dashboard</a>
+            <a class="nav-item nav-link" style="color:#fff; " href="/signout/">Logout</a>
           </div>
        </div>
 </nav>
@@ -70,9 +70,11 @@
       <div class="col-2">
         <br>
         <nav class="pill-nav">
-          <a href="/dashboard">All diary entries</a>
-          <a href="/create" class="active">New diary</a>
-          <a href="/fav-diaries/">Starred entries</a>
+          <h3 style="color:#040116;text-align: center;font-weight: 600">{{owner.diaryname}}<i class="fa fa-book-open"></i></h3>
+          <br>
+          <a class="active" href="/dashboard/" style="flex-direction: row;"><i class="fas fa-layer-group"></i> &nbsp;All entries</a>
+          <a href="/create/" style="flex-direction: row;"><i class="fas fa-plus-circle"></i> &nbsp;New Entry</a>
+          <a href="/fav-diaries/" style="flex-direction: row;"><i class="fas fa-star"></i>Starred entries</a>
         </nav>
     </div>
       <div class="col-md-9">
@@ -101,7 +103,7 @@
       </div>
       <div class="col-2"></div>
   </div>
-
+</div>
   <script>
     // $(document).ready(function() {
     //     $('#summernote').summernote();
