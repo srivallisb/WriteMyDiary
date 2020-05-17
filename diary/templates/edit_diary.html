@@ -85,12 +85,14 @@
           
           <form action="/edit/{{editdiary.id}}/" method="POST">
             {% csrf_token %}
+            
               <label for="highlight">Highlight of the day:</label>
               <input type="text" name="highlight" id="highlight" value="{{editdiary.highlight}}" style="border-top: none;border-left: none;border-right: none; size: 100px;">
               <br>
-            <textarea name="diarycontent"  id ="summernote" style="position: relative;">{{editdiary.diarycontent}}</textarea>
+            <textarea name="diarycontent"  id ="summernote" >{{editdiary.diarycontent}}</textarea>
             <br>
-            <input type="submit" class="btn btn-lg" value="Save Changes" style="width:180px; background-color:#040116;color: white; margin-left: 600px;">
+            <input type="submit" class="btn btn-lg" value="Save Changes" style="width:180px; background-color:#040116;color: white; float: right;">
+
             
           </form>
           
