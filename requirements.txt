@@ -38,7 +38,7 @@ PyTweening==1.0.3
 pytz==2019.3
 requests==2.11.1
 requests-toolbelt==0.7.0
-rsa==4.0
+rsa==4.1
 six==1.14.0
 sqlparse==0.3.1
 tabulate==0.8.7
